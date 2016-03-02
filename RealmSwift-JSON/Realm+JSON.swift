@@ -1,16 +1,15 @@
 //
 //  Realm+JSON.swift
-//  betweendate
+//  RealmSwift
 //
 //  Created by KimChangsung on 2/11/16.
-//  Copyright © 2016 VCNC. All rights reserved.
+//  Copyright © 2016 Changsung. All rights reserved.
 //
 
 import RealmSwift
 
 extension Realm {
     func create<T : RealmSwift.Object>(type: T.Type, jsonDictionary: [String:AnyObject], update: Bool = true) -> T {
-        realmNotiArray.insert(T.className())
         return create(type, value: T.createJSONObjectFromJSONDictionary(jsonDictionary), update: update)
     }
     

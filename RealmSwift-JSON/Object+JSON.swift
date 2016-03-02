@@ -1,9 +1,9 @@
 //
 //  Object+JSON.swift
-//  betweendate
+//  RealmSwift
 //
 //  Created by KimChangsung on 2/11/16.
-//  Copyright © 2016 VCNC. All rights reserved.
+//  Copyright © 2016 Changsung. All rights reserved.
 //
 
 import RealmSwift
@@ -25,28 +25,28 @@ extension Object {
             guard let inboundKeyName = inboundMapping[propertyName] else {continue}
             var value = dictionary[inboundKeyName]
             if (value != nil) {
-                //                if let transformer = transformerForPropertyKey(propertyName)  { // 현재 쓰고있는 transformer가 없어서 지워놨어요 (성능)
-                //                    value = transformer.reverseTransformedValue(value)
-                //                } else {
-                switch (property.type) {
-                case .Date:
-                    value = BDCJSONDateTransformer().reverseTransformedValue(value)
-                case .Object:
-                    guard let className = property.objectClassName else {continue}
-                    guard let aClass = RLMSchema.classForString(className) as? Object.Type else {continue}
-                    value = aClass.createJSONObjectFromJSONDictionary(value as! [String:AnyObject])
-                case .Array:
-                    var array = [AnyObject]()
-                    guard let aValue = value as? [[String:AnyObject]] else {continue}
-                    guard let className = property.objectClassName else {continue}
-                    guard let aClass = RLMSchema.classForString(className) as? Object.Type else {continue}
-                    for item in aValue {
-                        array.append(aClass.createJSONObjectFromJSONDictionary(item))
+                if let transformer = transformerForPropertyKey(propertyName)  {
+                    value = transformer.reverseTransformedValue(value)
+                } else {
+                    switch (property.type) {
+                    case .Date:
+                        value = BDCJSONDateTransformer().reverseTransformedValue(value)
+                    case .Object:
+                        guard let className = property.objectClassName else {continue}
+                        guard let aClass = RLMSchema.classForString(className) as? Object.Type else {continue}
+                        value = aClass.createJSONObjectFromJSONDictionary(value as! [String:AnyObject])
+                    case .Array:
+                        var array = [AnyObject]()
+                        guard let aValue = value as? [[String:AnyObject]] else {continue}
+                        guard let className = property.objectClassName else {continue}
+                        guard let aClass = RLMSchema.classForString(className) as? Object.Type else {continue}
+                        for item in aValue {
+                            array.append(aClass.createJSONObjectFromJSONDictionary(item))
+                        }
+                        value = array
+                    default:()
                     }
-                    value = array
-                default:()
                 }
-                //                }
                 
                 result[propertyName] = value
             }
