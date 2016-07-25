@@ -1,5 +1,5 @@
 # RealmSwift-JSON
-Easy way to transform to RealmSwift Object &lt;-> JSON like [Mantle](https://github.com/Mantle/Mantle) inspired from [matthewcheok/Realm-JSON](https://github.com/matthewcheok/Realm-JSON) 
+Easy way to transform between RealmSwift Object and JSON like [Mantle](https://github.com/Mantle/Mantle) inspired from [matthewcheok/Realm-JSON](https://github.com/matthewcheok/Realm-JSON) 
 
 ##Installation
 just copy files in the ```RealmSwift-JSON``` folder into your project and add the under code into objective-c bridging-header
