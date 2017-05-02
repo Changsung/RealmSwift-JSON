@@ -8,7 +8,7 @@ just copy files in the ```RealmSwift-JSON``` folder into your project and add th
     #import <Realm/RLMObject_Private.h>
     #import <Realm/Realm.h>
   
-##Using RealmSwift-JSON 
+#Using RealmSwift-JSON 
 
 You can specify the inbound and outbound JSON mapping with your model.
 
