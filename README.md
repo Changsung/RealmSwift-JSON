@@ -1,7 +1,7 @@
 # RealmSwift-JSON
-Easy way to transform library between RealmSwift Object and JSON like [Mantle](https://github.com/Mantle/Mantle) 
+A transform library between RealmSwift Object and JSON like [Mantle](https://github.com/Mantle/Mantle) 
 ## Installation
-just copy files in the ```RealmSwift-JSON``` folder into your project and add the under code into objective-c bridging-header
+Copy files in the ```RealmSwift-JSON``` folder into your project and add the under code into objective-c bridging-header
 
     #import <Realm/RLMProperty.h>
     #import <Realm/RLMObjectSchema.h>
@@ -10,7 +10,7 @@ just copy files in the ```RealmSwift-JSON``` folder into your project and add th
   
 ## Using RealmSwift-JSON 
 
-You can specify the inbound and outbound JSON mapping with your model.
+Specify the inbound and outbound JSON mapping with the models.
 
     class card:Object {
         dynamic var id = "" 
@@ -45,7 +45,7 @@ It works as follows:
     print(person.JSONDictionary()) 
     // ["id":"0", "name":"henry"]
     
-You can also specify custom ```NSValueTransformer```  like Mantle way as follows:
+Specify custom ```NSValueTransformer```  like Mantle way as follows:
 
     class category:Object {
         let addesses = List<CSRString>()
